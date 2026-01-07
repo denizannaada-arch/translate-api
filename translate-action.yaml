@@ -12,7 +12,7 @@ paths:
       description: >
         Sends Turkish text to a rule-based translation API that enforces fidelity, structure preservation,
         and output validation. Footnotes must be preserved, and forbidden characters (em dash, en dash)
-        must not appear. Violations return a 422 error.
+        must not appear. Only Turkish footnotes are translated. Violations return a 422 error.
       requestBody:
         required: true
         content:
