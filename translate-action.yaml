@@ -3,7 +3,7 @@ info:
   title: Rule-Based Turkish-English Translator
   version: 1.0.0
 servers:
-  - url: http://localhost:8000
+  - url: https://translate-api-o1of.onrender.com
 paths:
   /translate:
     post:
@@ -42,3 +42,4 @@ paths:
                   detail:
                     type: string
                     example: Translation stopped due to instruction violation.
+
