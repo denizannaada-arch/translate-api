@@ -1,0 +1,44 @@
+openapi: 3.1.0
+info:
+  title: Rule-Based Turkish-English Translator
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+paths:
+  /translate:
+    post:
+      operationId: strictTranslate
+      summary: Translate Turkish academic text into English under strict rules
+      description: >
+        Sends Turkish text to a rule-based translation API that enforces fidelity, structure preservation,
+        and output validation. Footnotes must be preserved, and forbidden characters (em dash, en dash)
+        must not appear. Violations return a 422 error.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: Turkish academic or official text
+              required:
+                - text
+      responses:
+        '200':
+          description: Clean translated English text
+          content:
+            text/plain:
+              schema:
+                type: string
+        '422':
+          description: Violation of translation rules
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: Translation stopped due to instruction violation.
